@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Boithao — Η πλατφόρμα που λύνει τα καθημερινά σου</title>
+<meta name="description" content="Συνδέουμε ανθρώπους που χρειάζονται βοήθεια με αξιόπιστους επαγγελματίες και taskers. Από συναρμολόγηση επίπλων μέχρι υδραυλικά — κάποιος είναι κοντά σου.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=DM+Sans:opsz,wght@9..40,300..700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --cream: #F5EFE6;
+  --cream-light: #FAF6F0;
+  --ink: #1A1F1C;
+  --ink-soft: #2D332F;
+  --forest: #2D5A3D;
+  --forest-deep: #1F3F2A;
+  --sage: #B5C5B8;
+  --terracotta: #D97757;
+  --terracotta-light: #E89B7C;
+  --accent-yellow: #F4C95D;
+  --border: #E5DDD0;
+  --muted: #8A857C;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.serif { font-family: 'Fraunces', serif; font-variation-settings: 'opsz' 144; }
+
+/* ============ NAV ============ */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 20px 40px;
+  background: rgba(245, 239, 230, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 26px;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--terracotta);
+  display: inline-block;
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+
+.nav-links a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--terracotta); }
+
+.nav-cta {
+  background: var(--ink);
+  color: var(--cream);
+  padding: 10px 20px;
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.nav-cta:hover { background: var(--terracotta) !important; transform: translateY(-1px); }
+
+/* ============ HERO ============ */
+.hero {
+  padding: 140px 40px 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-blob {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(217, 119, 87, 0.18), transparent 70%);
+  top: -100px;
+  right: -200px;
+  filter: blur(40px);
+  pointer-events: none;
+}
+
+.hero-blob-2 {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(45, 90, 61, 0.12), transparent 70%);
+  bottom: -100px;
+  left: -150px;
+  filter: blur(40px);
+  pointer-events: none;
+}
+
+.hero-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(45, 90, 61, 0.08);
+  border: 1px solid rgba(45, 90, 61, 0.2);
+  padding: 8px 16px;
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--forest);
+  margin-bottom: 32px;
+  animation: fadeUp 0.6s ease-out;
+}
+
+.hero-badge .pulse {
+  width: 8px;
+  height: 8px;
+  background: var(--forest);
+  border-radius: 50%;
+  position: relative;
+}
+
+.hero-badge .pulse::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid var(--forest);
+  animation: pulse 2s ease-out infinite;
+  opacity: 0.6;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+h1.hero-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(48px, 7vw, 96px);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  margin-bottom: 28px;
+  max-width: 1100px;
+  animation: fadeUp 0.8s ease-out 0.1s backwards;
+}
+
+h1.hero-title em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--terracotta);
+  position: relative;
+}
+
+h1.hero-title em::after {
+  content: '';
+  position: absolute;
+  bottom: 8px;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: var(--accent-yellow);
+  z-index: -1;
+  opacity: 0.6;
+  transform: skewY(-1deg);
+}
+
+.hero-sub {
+  font-size: clamp(17px, 1.5vw, 21px);
+  color: var(--ink-soft);
+  max-width: 620px;
+  margin-bottom: 48px;
+  line-height: 1.5;
+  animation: fadeUp 0.8s ease-out 0.2s backwards;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============ DUAL CTA ============ */
+.dual-cta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  max-width: 920px;
+  animation: fadeUp 0.8s ease-out 0.3s backwards;
+}
+
+@media (max-width: 720px) {
+  .dual-cta { grid-template-columns: 1fr; }
+}
+
+.cta-card {
+  background: var(--cream-light);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 32px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.cta-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent, transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.cta-card.client { background: linear-gradient(135deg, #FAF6F0 0%, #F5EFE6 100%); }
+.cta-card.client:hover {
+  border-color: var(--terracotta);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -20px rgba(217, 119, 87, 0.3);
+}
+
+.cta-card.tasker { background: linear-gradient(135deg, #F0F4F1 0%, #E8EFE9 100%); }
+.cta-card.tasker:hover {
+  border-color: var(--forest);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -20px rgba(45, 90, 61, 0.3);
+}
+
+.cta-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  font-size: 28px;
+}
+
+.cta-card.client .cta-icon { background: rgba(217, 119, 87, 0.15); }
+.cta-card.tasker .cta-icon { background: rgba(45, 90, 61, 0.12); }
+
+.cta-card h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+}
+
+.cta-card p {
+  color: var(--ink-soft);
+  font-size: 15px;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.cta-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.cta-card.client .cta-arrow { color: var(--terracotta); }
+.cta-card.tasker .cta-arrow { color: var(--forest); }
+
+.cta-arrow svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.3s;
+}
+
+.cta-card:hover .cta-arrow svg { transform: translateX(4px); }
+
+/* ============ TRUST BAR ============ */
+.trust-bar {
+  margin-top: 80px;
+  padding-top: 40px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.trust-item svg {
+  width: 20px;
+  height: 20px;
+  color: var(--forest);
+}
+
+/* ============ CATEGORIES ============ */
+.section {
+  padding: 100px 40px;
+  position: relative;
+}
+
+.section-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.section-eyebrow {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  color: var(--ink);
+  margin-bottom: 24px;
+  max-width: 800px;
+}
+
+.section-sub {
+  font-size: 18px;
+  color: var(--ink-soft);
+  max-width: 600px;
+  margin-bottom: 64px;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.category {
+  background: var(--cream-light);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 28px 24px;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.category:hover {
+  background: white;
+  border-color: var(--terracotta);
+  transform: translateY(-2px);
+}
+
+.category-emoji {
+  font-size: 32px;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.category-name {
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+
+.category-count {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* ============ HOW IT WORKS ============ */
+.how-it-works {
+  background: var(--ink);
+  color: var(--cream);
+  border-radius: 32px;
+  margin: 100px 20px;
+  padding: 80px 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.how-it-works::before {
+  content: '';
+  position: absolute;
+  width: 800px;
+  height: 800px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(217, 119, 87, 0.15), transparent 60%);
+  top: -300px;
+  right: -300px;
+  pointer-events: none;
+}
+
+.how-it-works .section-eyebrow { color: var(--accent-yellow); }
+.how-it-works .section-title { color: var(--cream); }
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.step {
+  position: relative;
+}
+
+.step-num {
+  font-family: 'Fraunces', serif;
+  font-size: 80px;
+  font-weight: 300;
+  line-height: 1;
+  color: var(--terracotta);
+  margin-bottom: 16px;
+  font-style: italic;
+}
+
+.step h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 12px;
+  color: var(--cream);
+}
+
+.step p {
+  color: rgba(245, 239, 230, 0.7);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* ============ EMAIL SIGNUP ============ */
+.signup {
+  padding: 120px 40px;
+  text-align: center;
+  position: relative;
+}
+
+.signup-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.signup-eyebrow {
+  display: inline-block;
+  background: var(--ink);
+  color: var(--accent-yellow);
+  padding: 6px 16px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+}
+
+.signup h2 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(40px, 6vw, 72px);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  margin-bottom: 24px;
+}
+
+.signup p {
+  font-size: 18px;
+  color: var(--ink-soft);
+  margin-bottom: 48px;
+}
+
+.signup-form {
+  display: flex;
+  gap: 8px;
+  max-width: 500px;
+  margin: 0 auto 16px;
+  background: white;
+  padding: 8px;
+  border-radius: 100px;
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 32px -16px rgba(26, 31, 28, 0.15);
+}
+
+.signup-form input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 14px 24px;
+  font-size: 15px;
+  font-family: inherit;
+  background: transparent;
+  color: var(--ink);
+}
+
+.signup-form input::placeholder { color: var(--muted); }
+
+.signup-form button {
+  background: var(--ink);
+  color: var(--cream);
+  border: none;
+  padding: 14px 28px;
+  border-radius: 100px;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.signup-form button:hover {
+  background: var(--terracotta);
+  transform: scale(1.02);
+}
+
+@media (max-width: 540px) {
+  .signup-form {
+    flex-direction: column;
+    border-radius: 24px;
+  }
+  .signup-form button { width: 100%; }
+}
+
+.signup-role {
+  display: inline-flex;
+  gap: 8px;
+  margin-bottom: 32px;
+  background: var(--cream-light);
+  border: 1px solid var(--border);
+  padding: 6px;
+  border-radius: 100px;
+}
+
+.role-btn {
+  border: none;
+  background: transparent;
+  padding: 8px 20px;
+  border-radius: 100px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  color: var(--ink-soft);
+  transition: all 0.2s;
+}
+
+.role-btn.active {
+  background: var(--ink);
+  color: var(--cream);
+}
+
+.signup-fine {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.success-msg {
+  display: none;
+  background: var(--forest);
+  color: var(--cream);
+  padding: 20px 32px;
+  border-radius: 100px;
+  font-weight: 500;
+}
+
+.success-msg.show { display: inline-block; }
+
+/* ============ FOOTER ============ */
+footer {
+  padding: 60px 40px 40px;
+  border-top: 1px solid var(--border);
+  background: var(--cream-light);
+}
+
+.footer-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.footer-brand p {
+  color: var(--muted);
+  font-size: 14px;
+  margin-top: 12px;
+  max-width: 280px;
+}
+
+.footer-cols {
+  display: flex;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+.footer-col h5 {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 16px;
+}
+
+.footer-col a {
+  display: block;
+  color: var(--ink-soft);
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 8px;
+  transition: color 0.2s;
+}
+
+.footer-col a:hover { color: var(--terracotta); }
+
+.footer-bottom {
+  max-width: 1280px;
+  margin: 60px auto 0;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* ============ MOBILE ============ */
+@media (max-width: 768px) {
+  nav { padding: 16px 20px; }
+  .nav-links { gap: 16px; }
+  .nav-links a:not(.nav-cta) { display: none; }
+  .hero { padding: 110px 20px 60px; }
+  .section { padding: 80px 20px; }
+  .how-it-works { margin: 60px 12px; padding: 60px 30px; border-radius: 24px; }
+  .signup { padding: 80px 20px; }
+  .trust-bar { gap: 20px; flex-direction: column; align-items: flex-start; }
+  footer { padding: 40px 20px; }
+  .footer-cols { gap: 32px; }
+}
+
+/* ============ MARQUEE ============ */
+.marquee {
+  background: var(--forest);
+  color: var(--cream);
+  padding: 16px 0;
+  overflow: hidden;
+  white-space: nowrap;
+  border-top: 1px solid var(--forest-deep);
+  border-bottom: 1px solid var(--forest-deep);
+}
+
+.marquee-track {
+  display: inline-block;
+  animation: scroll 30s linear infinite;
+}
+
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  margin: 0 32px;
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.marquee-item::before {
+  content: '✦';
+  color: var(--accent-yellow);
+}
+
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <span class="logo-dot"></span>
+      Boithao
+    </a>
+    <div class="nav-links">
+      <a href="#categories">Κατηγορίες</a>
+      <a href="#how">Πώς δουλεύει</a>
+      <a href="#signup" class="nav-cta">Μπες στη waitlist</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-blob"></div>
+  <div class="hero-blob-2"></div>
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <span class="pulse"></span>
+      Έρχεται σύντομα στην Ελλάδα
+    </div>
+    
+    <h1 class="hero-title serif">
+      Κάθε θέλημα<br>
+      βρίσκει <em>τα χέρια του.</em>
+    </h1>
+    
+    <p class="hero-sub">
+      Από συναρμολόγηση επίπλων μέχρι υδραυλικά. Από καθαριότητα μέχρι μετακόμιση. 
+      Συνδέουμε ανθρώπους που χρειάζονται βοήθεια με αξιόπιστους επαγγελματίες της γειτονιάς σου.
+    </p>
+
+    <div class="dual-cta">
+      <a href="#signup" class="cta-card client" onclick="setRole('client')">
+        <div class="cta-icon">🛟</div>
+        <h3 class="serif">Χρειάζομαι βοήθεια</h3>
+        <p>Πες μας τι χρειάζεσαι. Σου βρίσκουμε αξιόπιστο επαγγελματία σε λίγα λεπτά.</p>
+        <span class="cta-arrow">
+          Δηλώσε ενδιαφέρον
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </span>
+      </a>
+
+      <a href="#signup" class="cta-card tasker" onclick="setRole('tasker')">
+        <div class="cta-icon">🛠️</div>
+        <h3 class="serif">Προσφέρω υπηρεσίες</h3>
+        <p>Βγάλε λεφτά κάνοντας αυτά που ξέρεις. Δούλευε με τους δικούς σου όρους.</p>
+        <span class="cta-arrow">
+          Γίνε από τους πρώτους
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </span>
+      </a>
+    </div>
+
+    <div class="trust-bar">
+      <div class="trust-item">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+        Επαληθευμένοι επαγγελματίες
+      </div>
+      <div class="trust-item">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+        Ασφαλείς πληρωμές
+      </div>
+      <div class="trust-item">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.539-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+        Reviews & ratings
+      </div>
+      <div class="trust-item">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+        Κοντά στη γειτονιά σου
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span class="marquee-item">Συναρμολόγηση επίπλων</span>
+    <span class="marquee-item">Υδραυλικά</span>
+    <span class="marquee-item">Ηλεκτρολογικά</span>
+    <span class="marquee-item">Καθαριότητα σπιτιού</span>
+    <span class="marquee-item">Μετακόμιση</span>
+    <span class="marquee-item">Μπογιατίσματα</span>
+    <span class="marquee-item">Pet sitting</span>
+    <span class="marquee-item">Μαθήματα</span>
+    <span class="marquee-item">Κηπουρική</span>
+    <span class="marquee-item">Tech support</span>
+    <span class="marquee-item">Συναρμολόγηση επίπλων</span>
+    <span class="marquee-item">Υδραυλικά</span>
+    <span class="marquee-item">Ηλεκτρολογικά</span>
+    <span class="marquee-item">Καθαριότητα σπιτιού</span>
+    <span class="marquee-item">Μετακόμιση</span>
+    <span class="marquee-item">Μπογιατίσματα</span>
+    <span class="marquee-item">Pet sitting</span>
+    <span class="marquee-item">Μαθήματα</span>
+    <span class="marquee-item">Κηπουρική</span>
+    <span class="marquee-item">Tech support</span>
+  </div>
+</div>
+
+<!-- ============ CATEGORIES ============ -->
+<section class="section" id="categories">
+  <div class="section-inner">
+    <div class="section-eyebrow">Κατηγορίες</div>
+    <h2 class="section-title">Όλα όσα <em style="font-style: italic; color: var(--terracotta);">δεν προλαβαίνεις</em> να κάνεις μόνος σου.</h2>
+    <p class="section-sub">Από μικρές δουλειές της καθημερινότητας μέχρι σοβαρές επισκευές. Κάποιος αξιόπιστος είναι πάντα κοντά σου.</p>
+
+    <div class="categories-grid">
+      <div class="category">
+        <span class="category-emoji">🪑</span>
+        <div class="category-name">Συναρμολόγηση</div>
+        <div class="category-count">Έπιπλα, IKEA, ντουλάπες</div>
+      </div>
+      <div class="category">
+        <span class="category-emoji">🔧</span>
+        <div class="category-name">Υδραυλικά</div>
+        <div class="category-count">Διαρροές, αποφράξεις</div>
+      </div>
+      <div class="category">
+        <span class="category-emoji">⚡</span>
+        <div class="category-name">Ηλεκτρολογικά</div>
+        <div class="category-count">Πρίζες, φωτιστικά</div>
+      </div>
+      <div class="category">
+        <span class="category-emoji">🧹</span>
+        <div class="category-name">Καθαριότητα</div>
+        <div class="category-count">Σπίτια, γραφεία</div>
+      </div>
+      <div class="category">
+        <span class="category-emoji">📦</span>
+        <div class="category-name">Μετακόμιση</div>
+        <div class="category-count">Μεταφορές, packaging</div>
+      </div>
+      <div class="category">
+        <span class="category-emoji">🎨</span>
+        <div class="category-name">Μπογιατίσματα</div>
+        <div class="category-count">Εσωτερικά, εξωτερικά</div>
+      </div>
+      <div class="category">
+        <span class="category-emoji">🐕</span>
+        <div class="category-name">Pet sitting</div>
+        <div class="category-count">Βόλτες, φύλαξη</div>
+      </div>
+      <div class="category">
+        <span class="category-emoji">📚</span>
+        <div class="category-name">Μαθήματα</div>
+        <div class="category-count">Ξένες γλώσσες, μουσική</div>
+      </div>
+      <div class="category">
+        <span class="category-emoji">🌱</span>
+        <div class="category-name">Κηπουρική</div>
+        <div class="category-count">Φυτά, χλοοτάπητας</div>
+      </div>
+      <div class="category">
+        <span class="category-emoji">💻</span>
+        <div class="category-name">Tech support</div>
+        <div class="category-count">PC, Wi-Fi, smart home</div>
+      </div>
+      <div class="category">
+        <span class="category-emoji">🚗</span>
+        <div class="category-name">Οδήγηση</div>
+        <div class="category-count">Μεταφορές, errands</div>
+      </div>
+      <div class="category">
+        <span class="category-emoji">✨</span>
+        <div class="category-name">Και πολλά άλλα</div>
+        <div class="category-count">Πες μας τι χρειάζεσαι</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section id="how">
+  <div class="how-it-works">
+    <div class="section-eyebrow">Πώς δουλεύει</div>
+    <h2 class="section-title">Τρία βήματα. Καμία ταλαιπωρία.</h2>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num serif">01</div>
+        <h4 class="serif">Πες μας τι χρειάζεσαι</h4>
+        <p>Διάλεξε κατηγορία, περιέγραψε τη δουλειά, βάλε τοποθεσία. Παίρνει ένα λεπτό.</p>
+      </div>
+      <div class="step">
+        <div class="step-num serif">02</div>
+        <h4 class="serif">Διάλεξε επαγγελματία</h4>
+        <p>Δες προφίλ, reviews και τιμές. Μίλα μαζί του πριν κλείσεις. Όλοι επαληθευμένοι.</p>
+      </div>
+      <div class="step">
+        <div class="step-num serif">03</div>
+        <h4 class="serif">Πλήρωσε όταν τελειώσει</h4>
+        <p>Ασφαλής πληρωμή με κάρτα μέσω της πλατφόρμας. Άφησε review και τέλος.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SIGNUP ============ -->
+<section class="signup" id="signup">
+  <div class="signup-inner">
+    <div class="signup-eyebrow">✦ Early Access</div>
+    <h2 class="serif">Μπες <em style="font-style: italic; color: var(--terracotta);">πρώτος</em> στη waitlist.</h2>
+    <p>Όσοι μπουν τώρα, θα έχουν τις πρώτες κρατήσεις και ειδικές εκπτώσεις στο launch.</p>
+
+    <div class="signup-role">
+      <button class="role-btn active" id="role-client" onclick="setRole('client')">Χρειάζομαι βοήθεια</button>
+      <button class="role-btn" id="role-tasker" onclick="setRole('tasker')">Προσφέρω υπηρεσίες</button>
+    </div>
+
+    <form class="signup-form" id="signup-form" onsubmit="handleSubmit(event)">
+      <input type="email" id="email-input" placeholder="το@email.σου" required>
+      <button type="submit" id="submit-btn">Μπες στη λίστα</button>
+    </form>
+
+    <div class="success-msg" id="success-msg">
+      ✓ Είσαι μέσα! Θα σε ειδοποιήσουμε με τα πρώτα νέα.
+    </div>
+
+    <p class="signup-fine" id="fine-text">Δωρεάν εγγραφή. Μηδέν spam. Ακύρωση όποτε θες.</p>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="#" class="logo">
+        <span class="logo-dot"></span>
+        Boithao
+      </a>
+      <p>Η πλατφόρμα που συνδέει ανθρώπους με αξιόπιστους επαγγελματίες της γειτονιάς.</p>
+    </div>
+
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h5>Πλατφόρμα</h5>
+        <a href="#categories">Κατηγορίες</a>
+        <a href="#how">Πώς δουλεύει</a>
+        <a href="#signup">Waitlist</a>
+      </div>
+      <div class="footer-col">
+        <h5>Εταιρεία</h5>
+        <a href="#">Σχετικά με εμάς</a>
+        <a href="#">Επικοινωνία</a>
+        <a href="#">Blog</a>
+      </div>
+      <div class="footer-col">
+        <h5>Νομικά</h5>
+        <a href="#">Όροι χρήσης</a>
+        <a href="#">Πολιτική απορρήτου</a>
+        <a href="#">Cookies</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>© 2026 Boithao. Με την αγάπη μας από Αθήνα.</span>
+    <span>Made in Greece 🇬🇷</span>
+  </div>
+</footer>
+
+<script>
+let selectedRole = 'client';
+
+function setRole(role) {
+  selectedRole = role;
+  document.getElementById('role-client').classList.toggle('active', role === 'client');
+  document.getElementById('role-tasker').classList.toggle('active', role === 'tasker');
+  
+  // Scroll to signup if from CTA
+  if (event && event.target.closest('.cta-card')) {
+    setTimeout(() => {
+      document.getElementById('signup').scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+  }
+}
+
+function handleSubmit(e) {
+  e.preventDefault();
+  const email = document.getElementById('email-input').value;
+  
+  // Σε production: εδώ θα στείλεις στο Supabase / Mailchimp / κλπ
+  console.log('Signup:', { email, role: selectedRole });
+  
+  // Προσωρινή προσομοίωση επιτυχίας
+  document.getElementById('signup-form').style.display = 'none';
+  document.getElementById('fine-text').style.display = 'none';
+  document.getElementById('success-msg').classList.add('show');
+}
+
+// Subtle parallax for hero blobs
+window.addEventListener('scroll', () => {
+  const scrolled = window.pageYOffset;
+  const blob1 = document.querySelector('.hero-blob');
+  const blob2 = document.querySelector('.hero-blob-2');
+  if (blob1) blob1.style.transform = `translateY(${scrolled * 0.3}px)`;
+  if (blob2) blob2.style.transform = `translateY(${scrolled * -0.2}px)`;
+});
+</script>
+
+</body>
+</html>
